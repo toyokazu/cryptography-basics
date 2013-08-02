@@ -1,0 +1,47 @@
+<h2>ASCIIコード表</h2>
+
+<p>コンピュータ上で2進数を用いて文字列を表現する際に広く利用されている割り当て方法です．ASCII Code にはアルファベットしか含まれていませんが，現在は Unicode という漢字やハングルなど世界中の文字を含む文字コードが使われています．ASCII Code は Unicode の一部として現在も用いられています．</p>
+<p>文字の下に書かれた数字がASCII Codeで，表の左端にはASCII Codeを2進数で表した時の上位4ビット (0/1が4つ分)，表の上端にはASCII Codeの下位4ビット (0/1が4つ分) が表記されています．16進数も合わせて表記されていますので，参考にしてください．
+
+<%= content_tag "table", id: "ascii_code", data: {hint1: @hint1, hint2: @hint2} do %>
+  <tr>
+    <td class="hint1">
+    </td>
+    <td class="hint1">
+    </td>
+    <% (0..15).each do |col| %>
+    <td class="hint1">
+      <%= sprintf("%04b", col) %>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <td class="hint1">
+    </td>
+    <td>
+      16進数表記<br/>
+      ↓上の桁，→下の桁
+    </td>
+    <% (0..15).each do |col| %>
+    <td class="header">
+      <%= sprintf("%X", col) %>
+    </td>
+    <% end %>
+  </tr>
+  <% (0..5).each do |row| %>
+  <tr>
+    <td class="hint1">
+      <%= sprintf("%08b", (32 + row * 16))[0..3] %>
+    </td>
+    <td class="header">
+      0x<%= sprintf("%X", (32 + row * 16)) %>
+    </td>
+    <% (0..15).each do |col| %>
+    <td class="character">
+      <%= (32 + row * 16 + col).chr %><br/>
+      <div class="hint2">(<%= (32 + row * 16 + col) %>)</div>
+    </td>
+    <% end %>
+  </tr>
+  <% end %>
+<% end %>

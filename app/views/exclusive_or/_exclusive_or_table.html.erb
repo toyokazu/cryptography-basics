@@ -1,0 +1,13 @@
+<table class="exclusive_or">
+  <% (0..(2**(@nbits)-1)).each do |i| %>
+    <% (0..(2**(@nbits)-1)).each do |j| %>
+  <tr>
+    <td><%= "%0#{@nbits}b" % i %></td>
+    <td>⊕</td>
+    <td><%= "%0#{@nbits}b" % j %></td>
+    <td>=</td>
+    <td><%= "%0#{@nbits}b" % (i ^ j) %></td>
+  </tr>
+    <% end %>
+  <% end %>
+</table>

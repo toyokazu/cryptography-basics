@@ -1,0 +1,24 @@
+<table id="caesar_table">
+  <tr>
+    <td>暗号化前</td>
+    <% (0..25).each do |i| %>
+    <td>
+      <%= (97 + i).chr %>
+    </td>
+    <% end %>
+  </tr>
+  <tr>
+    <td></td>
+    <% (0..25).each do |i| %>
+    <td>↓</td>
+    <% end %>
+  </tr>
+  <tr>
+    <td>暗号化後</td>
+    <% (0..25).each do |i| %>
+    <td>
+      <%= (65 + (i + @key) % 26).chr %>
+    </td>
+    <% end %>
+  </tr>
+</table>

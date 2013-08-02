@@ -1,0 +1,31 @@
+<% content_for :title do -%>
+  単一換字暗号
+<% end -%>
+<h1>単一換字暗号</h1>
+
+<h2>概要</h2>
+
+<p>シーザー暗号ではアルファベットの文字をずらしていましたが，単一換字暗号 (Simple Substitution Cipher) では，平文を構成するアルファベットを別のアルファベットに変換します．シーザー暗号は単一換字暗号の１つといえます．</p>
+
+<h2>体験</h2>
+
+<p>単一換字暗号ではアルファベットを変換する表を用います．以下ではその例に触れてもらいます．</p>
+
+<h3>暗号化に用いる表</h3>
+下記の表は単一換字暗号の対応表（換字表）の例です．
+<%= render 'simple_substitution_table' %>
+
+<h3>暗号化の例</h3>
+
+<p>上記の換字表を用いた暗号化の例です．</p>
+
+暗号化前：<%= @before %><br/>
+暗号化後：<%= @after %>
+
+
+<h2>問題に挑戦</h2>
+
+<p>単一換字暗号の演習問題です．上記の表を用いて暗号化・復号化をして理解できたかどうか確認してみましょう．</p>
+
+<%= link_to '演習問題1: 暗号化（平文を暗号文にする）', simple_substitution_cipher_exercises_1_url(params.merge(:key => @key)), :target => "_blank" %><br/>
+<%= link_to '演習問題2: 復号化（暗号文を平文に戻す）', simple_substitution_cipher_exercises_2_url(params.merge(:key => @key)), :target => "_blank" %><br/>

@@ -1,0 +1,34 @@
+<% content_for :title do -%>
+  文字コード (ASCII Code)
+<% end -%>
+<h1>文字コード (ASCII Code)（コンピュータ上での文字表現）</h1>
+
+<h2>概要</h2>
+
+コンピュータは文字も2進数で表現しています．世界中で使われてきた2進数での文字の表現方法である ASCII Code について学んでみましょう．
+
+<h2>体験</h2>
+
+<%= form_tag(ascii_code_url(params), :method => :get) do %>
+  ヒント1あり <%= radio_button_tag(:hint1, "visible", @hint1.nil? || @hint1 == "visible") %>/
+  なし <%= radio_button_tag(:hint1, "hidden", @hint1 == "hidden") %><br/>
+  ヒント2あり <%= radio_button_tag(:hint2, "visible", @hint2.nil? || @hint2 == "visible") %>/
+  なし <%= radio_button_tag(:hint2, "hidden", @hint2 == "hidden") %><br/>
+  <%= submit_tag "設定" %>
+<% end %>
+
+<%= render 'ascii_code' %>
+
+<p>
+上部の設定項目で，2進数や文字の下のASCII Codeの表示ON/OFFを切り替えられます．
+</p>
+
+
+<h2>問題に挑戦</h2>
+
+<p>上記のASCIIコード表を用いて文字列から2進数への変換，2進数から文字列への変換を体験してみてください．</p>
+
+<%= link_to '演習問題1: 文字列 => 2進数', ascii_code_exercises_1_url(params), :target => "_blank" %><br/>
+<%= link_to '演習問題2: 2進数 => 文字列', ascii_code_exercises_2_url(params), :target => "_blank" %><br/>
+
+<p>なんだか暗号みたいですね．一見わかりにくくなっているように見えても，その変換の方法をみんなが知っている場合，誰でも読むことができてしまいます．つまり暗号の役割は果たせません．</p>

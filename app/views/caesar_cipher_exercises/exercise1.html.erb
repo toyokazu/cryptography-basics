@@ -1,0 +1,20 @@
+<h1>シーザー暗号 演習問題</h1>
+
+<h2>暗号化（平文を暗号文にする）</h2>
+
+次の平文
+
+<div class="plain"><%= @plain %></div>
+
+をシーザー暗号で暗号化せよ．
+ただし，鍵は
+
+<div class="key"><%= @key %></div>
+
+とする．
+
+<%= form_tag(caesar_cipher_exercises_1_path, :method => :post) do %>
+  <%= text_field_tag(:answer, @answer, :size => @plain.length) %>
+  <%= hidden_field_tag(:key, @key) %>
+  <%= submit_tag "解答する" %>
+<% end %>

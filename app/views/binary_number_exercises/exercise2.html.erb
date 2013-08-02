@@ -1,0 +1,10 @@
+<h1>2進数 演習問題</h1>
+
+<h2>問題 (10進数 => 2進数)</h2>
+
+10進数 <div class="decimal"><%= @number %></div> は2進数で表すと（　　）になる．
+
+<%= form_tag('/binary_number_exercises/2', :method => :post) do %>
+  <%= text_field_tag(:answer, @answer, :size => @nbits) %>
+  <%= submit_tag "解答する" %>
+<% end %>

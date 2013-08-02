@@ -1,0 +1,22 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+class Card
+  name: (num) ->
+    "card-" + Math.pow(2, num)
+  file_name: (num) ->
+    this.name(num) + ".png"
+  element: (num) ->
+    document.getElementById(this.name(num))
+  constructor: (num) ->
+    this.element(num).onclick = =>
+      alert(@file_name(num))
+      @element(num).src = @file_name(num)
+
+$ ->
+  card16 = new Card(4)
+  card08 = new Card(3)
+  card04 = new Card(2)
+  card02 = new Card(1)
+  card01 = new Card(0)

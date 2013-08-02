@@ -1,0 +1,33 @@
+<% content_for :title do -%>
+  2進数
+<% end -%>
+<h1>2進数（コンピュータの表現方法: <%= @nbits %> bit）</h1>
+
+<h2>概要</h2>
+
+<p>コンピュータは情報をどのように表現しているか知っていますか？実は，0と1の2つの数字で全ての情報を表現しています．この0と1のみで数値を表現する2進法に触れてみましょう．</p>
+
+<h2>体験</h2>
+
+<p>ここではカードを使って2進法を体験してもらいます．カードをクリックするとカードが裏返ります．カードに書かれた数字（丸の数で数字を表しています）を足した数が，2進法が表す数字になります．最初は右端に合計値が出ているので参考にしてください．カードの表の数字もヒントとしてカードの上に表示されています．これらの数字は下の設定で表示しないように変更できます．また，カード自体を本来の数値，0または1に変更することもできます．慣れてきたらヒントを減らして0/1のカードで数字を表現できるか試してみてください．</p>
+
+<%= form_tag(binary_number_url(params), :method => :get) do %>
+  ヒント1あり <%= radio_button_tag(:hint1, "visible", @hint1.nil? || @hint1 == "visible") %>/
+  なし <%= radio_button_tag(:hint1, "hidden", @hint1 == "hidden") %><br/>
+  ヒント2あり <%= radio_button_tag(:hint2, "visible", @hint2.nil? || @hint2 == "visible") %>/
+  なし <%= radio_button_tag(:hint2, "hidden", @hint2 == "hidden") %><br/>
+  ビット数を他の値に変更できます (0から8)．<%= text_field_tag(:nbits, @nbits, :size => 2) %><br/>
+  カードの種類を変更できます．数字 <%= radio_button_tag(:type, "card", @type.nil? || @type == "card") %>/
+  0/1 <%= radio_button_tag(:type, "binary", @type == "binary") %><br/>
+  <%= submit_tag "設定" %>
+<% end %>
+
+<%= render 'binary_cards' %>
+
+<h2>問題に挑戦</h2>
+
+<p>2進法について理解度を確認するための演習問題を用意しています．2進数から10進数への変換およびその逆変換の問題を用意しているので，try してみてください．</p>
+
+<%= link_to '演習問題1: 2進数 => 10進数', binary_number_exercises_1_url(params), :target => "_blank" %><br/>
+<%= link_to '演習問題2: 10進数 => 2進数', binary_number_exercises_2_url(params) %><br/>
+

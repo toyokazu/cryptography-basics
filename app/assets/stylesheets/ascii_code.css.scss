@@ -1,0 +1,19 @@
+// Place all the styles related to the binary_number_exercises controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  table#ascii_code {
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+  }
+  table#ascii_code td {
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+    text-align: center
+  }
+  table#ascii_code .hint1 { font-size: small; }
+  table#ascii_code .hint2 { font-size: small; }
+  table#ascii_code .header { font-size: x-large; font-weight: bold; }
+  table#ascii_code .character { font-size: xx-large; font-weight: bold; }
+}

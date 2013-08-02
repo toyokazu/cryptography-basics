@@ -1,0 +1,41 @@
+<% content_for :title do -%>
+  シーザー暗号への総当り攻撃
+<% end -%>
+<h1>シーザー暗号への総当り攻撃</h1>
+
+<h2>概要</h2>
+
+暗号を解読しようとする人は鍵の値を知らないため，暗号を解読することができません．しかし，シーザー暗号で鍵が26種類（0個ずらす，1個ずらす，...，25個ずらす）しかないため，全ての鍵を試すこと（総当たり攻撃）で解読することができてしまいます．
+
+<h2>体験</h2>
+
+<p>シーザー暗号への総当り攻撃を体験してみましょう．現在の暗号鍵は<%= @key %>です．<p>
+<%= form_tag(caesar_cipher_brute_force_path, :method => :get) do %>
+  暗号鍵を他の値に変更できます．<%= text_field_tag(:key, @key, :size => 2) %><br/>
+  <%= submit_tag "設定" %>
+<% end %>
+
+<h3>暗号化に用いる表</h3>
+<%= render 'caesar_cipher/caesar_table' %>
+
+<h3>暗号化の例</h3>
+
+<p>上記の表で暗号化した例です．暗号鍵 (ずらす文字数) を知っていれば暗号化前の文字列を得ることができます．</p>
+
+暗号化前：<%= @before %><br/>
+暗号化後：<%= @after %>
+
+<h3>総当り攻撃の例</h3>
+
+<p>暗号鍵を知らなくても，全ての鍵を試すことで本の文字列が得られることが確認できます．ただし，特に暗号化する文字数が少ない場合，他にも意味のある単語が出てくる可能性があります．</p>
+
+攻撃する文字列：<div class="characters"><%= @after %></div><br/>
+
+<table id="caesar_brute_force_table">
+  <th>鍵の値</th><th>復号化結果</th>
+<% @brute_force.each_with_index do |decrypted, i| %>
+  <tr>
+    <td class="key"><%= i %></td><td class="characters">　<%= decrypted %></td>
+  </tr>
+<% end %>
+</table>

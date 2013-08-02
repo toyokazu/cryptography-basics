@@ -1,0 +1,13 @@
+// Place all the styles related to the binary_number_exercises controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  // question
+  .binary { font-size: xx-large; font-weight: bold; }
+  .decimal { font-size: xx-large; font-weight: bold; }
+
+  // answer
+  .result { font-size: xx-large; font-weight: bold; color: red }
+  .answer { font-size: x-large; }
+}

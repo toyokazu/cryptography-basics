@@ -1,0 +1,11 @@
+<h1>２進数 演習問題</h2>
+
+<h2>問題 (2進数 => 10進数)</h2>
+
+<div class="result"><%= @result %>です．</div>
+
+<p class="answer">問題: 　　　　<%= session[:answer][:binary] %></p>
+<p class="answer">正解: 　　　　<%= session[:answer][:number] %></p>
+<p class="answer">あなたの解答: <%= @user_answer %></p>
+
+<%= link_to '違う問題にチャレンジ', binary_number_exercises_1_path %>

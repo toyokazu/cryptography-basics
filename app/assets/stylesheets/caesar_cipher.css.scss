@@ -1,0 +1,15 @@
+// Place all the styles related to the caesar_cipher controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  table#caesar_table {
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+  }
+
+  table#caesar_table td {
+    border: 1px #000000 solid;
+    border-collapse: collapse;
+    text-align: center
+  }
+}

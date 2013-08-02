@@ -1,0 +1,10 @@
+<h1>使い捨てパッド 演習問題</h1>
+
+<h2>復号化（暗号文を平文に戻す）</h2>
+
+2進数 <div class="binary"><%= @encrypted.join(", ") %></div> を鍵 <div class="binary"><%= @key_array.join(", ") %></div> を用いて使い捨てパッドで復号化して得られる文字列は（　　）である．
+
+<%= form_tag(one_time_pad_exercises_2_path, :method => :post) do %>
+  <%= text_field_tag(:answer, @answer, :size => @word.length) %>
+  <%= submit_tag "解答する" %>
+<% end %>

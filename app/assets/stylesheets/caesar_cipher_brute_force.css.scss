@@ -1,0 +1,12 @@
+// Place all the styles related to the caesar_cipher_brute_force controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  table#caesar_brute_force_table .key {
+    text-align: right;
+  }  
+  table#caesar_brute_force_table .characters {
+    text-align: left;
+  }  
+}

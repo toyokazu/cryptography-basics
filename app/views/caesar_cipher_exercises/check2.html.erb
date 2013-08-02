@@ -1,0 +1,11 @@
+<h1>シーザー暗号 演習問題</h2>
+
+<h2>復号化（暗号文を平文に戻す）</h2>
+
+<div class="result"><%= @result %>です．</div>
+
+<p>問題: <%= session[:answer][:encrypted] %></p>
+<p>正解: <%= session[:answer][:plain] %></p>
+<p>あなたの解答: <%= @user_answer %></p>
+
+<%= link_to '違う問題にチャレンジ', caesar_cipher_exercises_2_path(:key => @key) %>

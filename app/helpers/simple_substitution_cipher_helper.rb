@@ -1,0 +1,2 @@
+module SimpleSubstitutionCipherHelper
+end

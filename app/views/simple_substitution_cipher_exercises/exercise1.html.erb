@@ -1,0 +1,22 @@
+<h1>単一換字暗号 演習問題</h1>
+
+<h2>暗号化（平文を暗号文にする）</h2>
+
+次の平文
+
+<div class="plain"><%= @plain %></div>
+
+を単一換字暗号で暗号化せよ．
+ただし，鍵は
+
+<%= render 'simple_substitution_cipher/simple_substitution_table' %>
+
+とする．
+
+<%= form_tag(simple_substitution_cipher_exercises_1_path, :method => :post) do %>
+  <%= text_field_tag(:answer, @answer, :size => @plain.length) %>
+  <% @key.each do |k| %>
+    <%= hidden_field_tag('key[]', k) %>
+  <% end %>
+  <%= submit_tag "解答する" %>
+<% end %>
