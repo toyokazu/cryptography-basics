@@ -4,6 +4,8 @@
 
 文字列 <div class="characters"><%= @word %></div> を鍵 <div class="binary"><%= @key_array.join(", ") %></div> を用いて使い捨てパッドで暗号化すると（　　）になる．
 
+<p class="notice">※注意：問題文や解答確認画面では便宜上2進数8ビットごとにカンマを表示していますが，解答時にはカンマは入力不要です．</p>
+
 <%= form_tag(one_time_pad_exercises_1_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, {:size => @word.length * 8 + 6, :maxlength => @word.length * 8}) %>
   <%= submit_tag "解答する" %>

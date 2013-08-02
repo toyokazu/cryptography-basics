@@ -17,6 +17,7 @@ class AsciiCodeExercisesController < ApplicationController
 
   def exercise2
     generate_answer1
+    @binary_array = split_binary_str(session[:answer][:binary_str])
   end
 
   def check2

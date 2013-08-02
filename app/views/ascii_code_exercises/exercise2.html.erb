@@ -2,7 +2,9 @@
 
 <h2>問題 (2進数 => 文字列)</h2>
 
-2進数 <div class="binary"><%= @binary_array.join(", ") %></div> は文字列で表すと（　　）になる．
+<p>2進数 <div class="binary"><%= @binary_array.join(", ") %></div> は文字列で表すと（　　）になる．</p>
+
+<p class="notice">※注意：問題文や解答確認画面では便宜上2進数8ビットごとにカンマを表示しています．</p>
 
 <%= form_tag(ascii_code_exercises_2_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, :size => @word.length) %>

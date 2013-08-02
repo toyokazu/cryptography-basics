@@ -4,6 +4,8 @@
 
 2進数 <div class="binary"><%= @encrypted.join(", ") %></div> を鍵 <div class="binary"><%= @key_array.join(", ") %></div> を用いて使い捨てパッドで復号化して得られる文字列は（　　）である．
 
+<p class="notice">※注意：問題文や解答確認画面では便宜上2進数8ビットごとにカンマを表示しています．</p>
+
 <%= form_tag(one_time_pad_exercises_2_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, :size => @word.length) %>
   <%= submit_tag "解答する" %>

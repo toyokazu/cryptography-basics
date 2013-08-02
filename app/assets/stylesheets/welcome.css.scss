@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
+  .notice { color: red; }
+  // answer
+  .result { font-size: xx-large; font-weight: bold; color: red }
+  .answer { font-size: x-large; }
+
   div.image {
     text-align: center;
     font-size: large;
