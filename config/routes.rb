@@ -1,4 +1,4 @@
-CryptgraphyBasics::Application.routes.draw do
+CryptographyBasics::Application.routes.draw do
 
   root "welcome#index"
   get "overview" => "welcome#overview"

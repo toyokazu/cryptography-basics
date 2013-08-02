@@ -1,4 +1,4 @@
-# Cryptgraphy Basics
+# Cryptography Basics
 
 オープンキャンパス用に作成した暗号技術の導入アプリケーションです．以下の文献を参考に作成しました．
 

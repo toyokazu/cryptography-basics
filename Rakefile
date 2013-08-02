@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CryptgraphyBasics::Application.load_tasks
+CryptographyBasics::Application.load_tasks
