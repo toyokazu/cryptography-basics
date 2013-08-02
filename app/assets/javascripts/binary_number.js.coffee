@@ -6,14 +6,14 @@ nbits = 0
 type = 'card'
 bits = []
 
-setSrc = (index, file_name) ->
+setSrc = (index, face_image, back_image) ->
   ->
     #alert(this.src)
-    if /-0.png/.test(this.src)
-      this.src = "/assets/" + file_name
+    if /-0\.png|-0-.+\.png/.test(this.src)
+      this.src = face_image
       bits[index] = 1
     else
-      this.src = "/assets/" + type + "-0.png"
+      this.src = back_image
       bits[index] = 0
     # alert(this.src)
     $('#card-sum').html(calcSum(nbits))
@@ -33,13 +33,8 @@ $ ->
   $('.hint2').css('visibility', $('table#cards').data('hint2'))
   for i in [0..(nbits-1)]
     num = Math.pow(2,nbits-1-i)
-    name = 'card-' + num
-    id = '#' + name
-    if type == 'card'
-      file_name = name + '.png'
-    else
-      file_name = type + '-1.png'
+    id = '#card-' + num
     # alert(num + ',' + id + ',' + file_name)
-    $(id).click(setSrc(i, file_name))
+    $(id).click(setSrc(i, $(id).data('face-image'), $(id).data('back-image')))
     bits[i] = 0
     @

@@ -14,7 +14,7 @@
   </th>
       <% else %>
   <td>
-    <%= image_tag("#{@type}-0.png", :id => "card-#{num}", :class => "card") %>
+    <%= image_tag(asset_path("#{@type}-0.png"), :id => "card-#{num}", :class => "card", :data => {:face_image => asset_path("#{@type}-#{num}.png"), :back_image => asset_path("#{@type}-0.png")}) %>
   </td>
       <% end %>
     <% else %>
