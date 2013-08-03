@@ -13,11 +13,11 @@ module OneTimePadFunctions
   end
   
   def encrypt(plain)
-    "%b" % (binary_str_to_binary(plain) ^ @key_value)
+    "%024b" % (binary_str_to_binary(plain) ^ @key_value)
   end
   
   def decrypt(encrypted)
-    "%b" % (binary_str_to_binary(encrypted) ^ @key_value)
+    "%024b" % (binary_str_to_binary(encrypted) ^ @key_value)
   end
   
   def generate_answer1
