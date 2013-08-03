@@ -9,20 +9,14 @@ class AsciiCodeExercisesController < ApplicationController
   end
 
   def check1
-    @user_answer = params["answer"]
-    check(session[:answer][:binary_str] == @user_answer)
-    @user_answer = split_binary_str(@user_answer)
-    @answer = split_binary_str(session[:answer][:binary_str])
+    check(session["ascii_code"]["binary_array"].join == params["answer"])
   end
 
   def exercise2
     generate_answer1
-    @binary_array = split_binary_str(session[:answer][:binary_str])
   end
 
   def check2
-    @user_answer = params["answer"]
-    check(session[:answer][:word] == @user_answer)
-    @binary_array = split_binary_str(session[:answer][:binary_str])
+    check(session["ascii_code"]["word"] == params["answer"])
   end
 end

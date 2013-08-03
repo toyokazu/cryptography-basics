@@ -8,8 +8,7 @@ class CaesarCipherExercisesController < ApplicationController
   end
   
   def check1
-    @user_answer = params["answer"]
-    check(session[:answer][:encrypted] == @user_answer)
+    check(session["caesar_cipher"]["encrypted"] == params["answer"])
   end
   
   def exercise2
@@ -17,7 +16,6 @@ class CaesarCipherExercisesController < ApplicationController
   end
   
   def check2
-    @user_answer = params["answer"]
-    check(session[:answer][:plain] == @user_answer)
+    check(session["caesar_cipher"]["plain"] == params["answer"])
   end
 end

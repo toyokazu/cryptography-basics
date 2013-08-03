@@ -16,10 +16,10 @@ module AsciiCodeFunctions
   def generate_answer1
     @words = Word.where("length(spell)<=3")
     @word = @words[rand * @words.size].spell
-    @binary_str = word_to_binary_str(@word)
-    session[:answer] = {
-      :word => @word,
-      :binary_str => @binary_str
+    @binary_array = word_to_binary_array(@word)
+    session["ascii_code"] = {
+      "word" => @word,
+      "binary_array" => @binary_array
     }
   end
 end

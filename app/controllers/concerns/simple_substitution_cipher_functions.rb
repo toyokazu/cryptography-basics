@@ -32,10 +32,10 @@ module SimpleSubstitutionCipherFunctions
     @words = Word.where("length(spell)<=3")
     @plain = @words[rand * @words.size].spell
     @encrypted = encrypt(@plain)
-    session[:answer] = {
-      :plain => @plain,
-      :encrypted => @encrypted,
-      :key => @key
+    session["simple_substitution_cipher"] = {
+      "plain" => @plain,
+      "encrypted" => @encrypted,
+      "key" => @key
     }
   end
 end

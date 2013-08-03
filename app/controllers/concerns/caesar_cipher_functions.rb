@@ -30,10 +30,10 @@ module CaesarCipherFunctions
     @words = Word.where("length(spell)<=?", length)
     @plain = @words[rand * @words.size].spell
     @encrypted = encrypt(@plain, @key)
-    session[:answer] = {
-      :plain => @plain,
-      :encrypted => @encrypted,
-      :key => @key
+    session["caesar_cipher"] = {
+      "plain" => @plain,
+      "encrypted" => @encrypted,
+      "key" => @key
     }
   end
 end

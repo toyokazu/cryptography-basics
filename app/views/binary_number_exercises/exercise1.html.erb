@@ -1,3 +1,6 @@
+<% content_for :title do -%>
+  2進数 演習問題
+<% end -%>
 <h1>2進数 演習問題</h1>
 
 <h2>問題 (2進数 => 10進数)</h2>
@@ -6,5 +9,6 @@
 
 <%= form_tag(binary_number_exercises_1_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, :size => (2 ** (@nbits + 1)).to_s.length) %>
+  <%= hidden_field_tag(:nbits, @nbits) %>
   <%= submit_tag "解答する" %>
 <% end %>

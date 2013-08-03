@@ -10,15 +10,11 @@ module SharedFunctions
     end
   end
 
-  def word_to_binary_str(word)
-    word.bytes.to_a.map {|code| "%08b" % code}.join
+  def word_to_binary_array(word)
+    word.bytes.to_a.map {|code| "%08b" % code}
   end
   
   def binary_str_to_binary(binary_str)
     "0b#{binary_str}".oct
-  end
-  
-  def split_binary_str(binary_str)
-    binary_str.scan(/.{8}|.+$/)
   end
 end

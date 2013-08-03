@@ -4,7 +4,7 @@ class OneTimePadController < ApplicationController
   
   def index
     @before = "get"
-    @after = split_binary_str(encrypt(word_to_binary_str(@before)))
-    @key_array = split_binary_str(@key)
+    @plain = word_to_binary_array(@before)
+    @after = encrypt(@plain)
   end
 end

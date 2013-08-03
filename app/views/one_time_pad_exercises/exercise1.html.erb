@@ -1,12 +1,18 @@
+<% content_for :title do -%>
+  使い捨てパッド 演習問題
+<% end -%>
 <h1>使い捨てパッド 演習問題</h1>
 
 <h2>暗号化（平文を暗号文にする）</h2>
 
-文字列 <div class="characters"><%= @word %></div> を鍵 <div class="binary"><%= @key_array.join(", ") %></div> を用いて使い捨てパッドで暗号化すると（　　）になる．
+文字列 <div class="characters"><%= @word %></div> を鍵 <div class="binary"><%= @key.join(", ") %></div> を用いて使い捨てパッドで暗号化すると（　　）になる．
 
 <p class="notice">※注意：問題文や解答確認画面では便宜上2進数8ビットごとにカンマを表示していますが，解答時にはカンマは入力不要です．</p>
 
 <%= form_tag(one_time_pad_exercises_1_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, {:size => @word.length * 8 + 6, :maxlength => @word.length * 8}) %>
+  <% @key.each do |k| %>
+    <%= hidden_field_tag('key[]', k) %>
+  <% end %>
   <%= submit_tag "解答する" %>
 <% end %>

@@ -1,11 +1,14 @@
+<% content_for :title do -%>
+  文字コード 演習問題
+<% end -%>
 <h1>文字コード 演習問題</h2>
 
 <h2>問題 (文字列 => 2進数)</h2>
 
 <div class="result"><%= @result %>です．</div>
 
-<p class="answer">問題: 　　　　<%= session[:answer][:word] %></p>
-<p class="answer">正解: 　　　　<%= @answer.join(", ") %></p>
-<p class="answer">あなたの解答: <%= @user_answer.join(", ") %></p>
+<p class="answer">問題: 　　　　<%= session["ascii_code"]["word"] %></p>
+<p class="answer">正解: 　　　　<%= session["ascii_code"]["binary_array"].join(", ") %></p>
+<p class="answer">あなたの解答: <%= split_binary_str(params["answer"]).join(", ") %></p>
 
 <%= link_to '違う問題にチャレンジ', ascii_code_exercises_1_path %>

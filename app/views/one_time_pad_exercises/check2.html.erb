@@ -1,13 +1,16 @@
+<% content_for :title do -%>
+  使い捨てパッド 演習問題
+<% end -%>
 <h1>使い捨てパッド 演習問題</h2>
 
 <h2>復号化（暗号文を平文に戻す）</h2>
 
 <div class="result"><%= @result %>です．</div>
 
-<p class="answer">問題: 　　　　<%= @encrypted.join(", ") %></p>
-<p class="answer">鍵: 　　　　　<%= @key_array.join(", ") %></p>
-<p class="answer">２進数(平文): <%= @plain.join(", ") %></p>
-<p class="answer">正解: 　　　　<%= session[:answer][:word] %></p>
-<p class="answer">あなたの解答: <%= @user_answer %></p>
+<p class="answer">問題: 　　　　<%= session["one_time_pad"]["encrypted"].join(", ") %></p>
+<p class="answer">鍵: 　　　　　<%= @key.join(", ") %></p>
+<p class="answer">２進数(平文): <%= session["one_time_pad"]["plain"].join(", ") %></p>
+<p class="answer">正解: 　　　　<%= session["one_time_pad"]["word"] %></p>
+<p class="answer">あなたの解答: <%= params["answer"] %></p>
 
 <%= link_to '違う問題にチャレンジ', one_time_pad_exercises_2_path(:key => @key) %>

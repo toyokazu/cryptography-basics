@@ -15,17 +15,18 @@
 
 <p>使い捨てパッドで下記の鍵を用いて文字列を暗号化した例です．使い捨てパッドを適用するためには，文字列を2進数に変換してから適用する必要があります．暗号化後の2進数は文字列で表示することもできますが，文字コードが割り当てられていない値も多くあるため，文字化けしたような読めない文字列になることが多いです．ここでは暗号化後の値は便宜上そのまま2進数で表記します．</p>
 
-鍵：<%= @key_array.join(", ") %><br/>
-暗号化前：<%= @before %><br/>
-暗号化後：<%= @after.join(", ") %>
+暗号化前 (平文)：　　　 <%= @before %><br/>
+暗号化前 (平文, 2進数)：<%= @plain.join(", ") %><br/>
+鍵：　　　　　　　　　 <%= @key.join(", ") %><br/>
+暗号化後 (暗号文)： 　　<%= @after.join(", ") %>
 
 
 <h2>問題に挑戦</h2>
 
 <p>使い捨てパッドの演習問題です．文字列の2進数への変換，2進数から文字列への変換には，<%= link_to 'ASCIIコード表', ascii_code_path, :target => "_blank" -%>を利用してください．</p>
 
-<%= link_to '演習問題1: 暗号化（平文を暗号文にする）', one_time_pad_exercises_1_url(params.merge(:key => @key)), :target => "_blank" %><br/>
-<%= link_to '演習問題2: 復号化（暗号文を平文に戻す）', one_time_pad_exercises_2_url(params.merge(:key => @key)), :target => "_blank" %><br/>
+<%= link_to '演習問題1: 暗号化（平文を暗号文にする）', one_time_pad_exercises_1_url(params.merge(:key => @key)) %><br/>
+<%= link_to '演習問題2: 復号化（暗号文を平文に戻す）', one_time_pad_exercises_2_url(params.merge(:key => @key)) %><br/>
 
 <h2>終わりに</h2>
 

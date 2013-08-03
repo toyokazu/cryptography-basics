@@ -10,8 +10,7 @@ class BinaryNumberExercisesController < ApplicationController
   end
   
   def check1
-    @user_answer = params["answer"].to_i
-    check(session[:answer][:number] == @user_answer)
+    check(session["binary_number"]["number"] == params["answer"].to_i)
   end
   
   def exercise2
@@ -19,8 +18,8 @@ class BinaryNumberExercisesController < ApplicationController
   end
   
   def check2
-    @user_answer = params["answer"]
-    @answer = "%0#{@user_answer.length}b" % session[:answer][:number]
+    @user_answer = "0" * (@nbits - params["answer"].length) + params["answer"]
+    @answer = "%0#{@nbits}b" % session["binary_number"]["number"]
     check(@answer == @user_answer)
   end
 end
