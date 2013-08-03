@@ -1,7 +1,6 @@
 CryptographyBasics::Application.routes.draw do
 
   root "welcome#index"
-  get "overview" => "welcome#overview"
 
   get "binary_number" => "binary_number#index"
 

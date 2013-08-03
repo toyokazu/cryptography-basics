@@ -14,7 +14,11 @@
   </th>
       <% else %>
   <td>
-    <%= image_tag(asset_path("#{@type}-0.png"), :id => "card-#{num}", :class => "card", :data => {:face_image => asset_path("#{@type}-#{num}.png"), :back_image => asset_path("#{@type}-0.png")}) %>
+    <% if @type == "card" %>
+      <%= image_tag(asset_path("card-0.png"), :id => "card-#{num}", :class => "card", :data => {:face_image => asset_path("card-#{num}.png"), :back_image => asset_path("card-0.png")}) %>
+    <% else %>
+      <%= image_tag(asset_path("binary-0.png"), :id => "card-#{num}", :class => "card", :data => {:face_image => asset_path("binary-1.png"), :back_image => asset_path("binary-0.png")}) %>
+    <% end %>
   </td>
       <% end %>
     <% else %>

@@ -4,7 +4,7 @@
 
 ２進数 <div class="binary"><%= @binary %></div> は10進数(普段使っている数字)で表すと（　　）になる．
 
-<%= form_tag('/binary_number_exercises/1', :method => :post) do %>
+<%= form_tag(binary_number_exercises_1_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, :size => (2 ** (@nbits + 1)).to_s.length) %>
   <%= submit_tag "解答する" %>
 <% end %>

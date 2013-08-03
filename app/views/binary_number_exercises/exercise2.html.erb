@@ -6,7 +6,7 @@
 
 <p class="notice">※注意：問題文や解答確認画面では便宜上2進数8ビットごとにカンマを表示していますが，解答時にはカンマは入力不要です．</p>
 
-<%= form_tag('/binary_number_exercises/2', :method => :post) do %>
+<%= form_tag(binary_number_exercises_2_path, :method => :post) do %>
   <%= text_field_tag(:answer, @answer, :size => @nbits) %>
   <%= submit_tag "解答する" %>
 <% end %>
