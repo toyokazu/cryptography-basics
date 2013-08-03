@@ -5,7 +5,9 @@
 <div class="result"><%= @result %>です．</div>
 
 <p class="answer">問題: 　　　　<%= session[:answer][:word] %></p>
+<p class="answer">２進数(平文): <%= @plain.join(", ") %></p>
+<p class="answer">鍵: 　　　　　<%= @key_array.join(", ") %></p>
 <p class="answer">正解: 　　　　<%= @answer.join(", ") %></p>
 <p class="answer">あなたの解答: <%= @user_answer.join(", ") %></p>
 
-<%= link_to '違う問題にチャレンジ', one_time_pad_exercises_1_path %>
+<%= link_to '違う問題にチャレンジ', one_time_pad_exercises_1_path(:key => @key) %>
