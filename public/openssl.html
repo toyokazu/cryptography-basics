@@ -1,0 +1,125 @@
+<html>
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  </head>
+<body>
+<h2 id="openssl">OpenSSL を用いた暗号化と復号化の体験</h2>
+
+<p>OpenSSL はオープンソースの Secure Socket Layer (SSL v2/v3) および Transport Layer Security (TLS v1) のプロトコルと汎用暗号技術を実装したライブラリである．OpenSSL は Apache HTTP Server (HTTP), OpenSSH (SSH), sendmail, postfix (SMTP), bind (DNS) 等のサーバでも利用されており，全世界的に利用されている暗号技術ライブラリの1つである．以下では OpenSSL の共通鍵暗号機能を使って暗号化，復号化を体験する．</p>
+
+<p>OpenSSL は Mac OS X および Ubuntu (Linux) に標準でインストールされている．OpenSSL はライブラリだけでなく，基本的な機能を利用するためのコマンド openssl を提供しており，ターミナルから利用できる．</p>
+
+<h3 id="">バージョンの確認</h3>
+
+<p>% openssl version</p>
+
+<h3 id="-1">利用可能なコマンド一覧</h3>
+
+<p>% openssl list-standard-commands</p>
+
+<h3 id="-2">利用可能な暗号化に関するコマンド一覧</h3>
+
+<p>% openssl list-cipher-commands</p>
+
+<h3 id="-3">利用可能な暗号アルゴリズム</h3>
+
+<p>% openssl ciphers</p>
+
+<p>対称暗号による暗号化の体験</p>
+
+<h3 id="-4">暗号化するテキストファイルの作成</h3>
+
+<p>% open -a Emacs plain.txt
+ひみつの文章ですよー．</p>
+
+<h3 id="aes-128bit-cbc">AES 128bit CBC アルゴリズム (対称暗号) による暗号化</h3>
+
+<p>% openssl enc -e -aes-128-cbc -in plain.txt -out aes-128-cbc-encoded.txt.enc</p>
+
+<h3 id="aes-128-cbc">aes-128-cbc の共通鍵 (パスワード) の入力</h3>
+
+<p>enter aes-128-cbc decryption password:</p>
+
+<h3 id="aes-128-cbc-1">aes-128-cbc の共通鍵 (パスワード) の確認入力</h3>
+
+<p>Verifying - enter aes-128-cbc encryption password:</p>
+
+<h3 id="-5">暗号化されたファイルの確認</h3>
+
+<p>% open -a Emacs encoded.txt.enc</p>
+
+<h3 id="aes-128bit-cbc-1">AES 128bit CBC アルゴリズム (対称暗号) によるファイルの復号化</h3>
+
+<p>% openssl enc -d -aes-128-cbc -in aes-128-cbc-encoded.txt.enc</p>
+
+<h3 id="aes-128-cbc-2">aes-128-cbc の共通鍵 (パスワード, 上で入力したもの) の入力</h3>
+
+<p>enter aes-128-cbc decryption password:
+ひみつの文章ですよー．</p>
+
+<p>鍵の確認</p>
+
+<h3 id="aes-128bit-cbc-2">AES 128bit CBC アルゴリズム (対称暗号) によるファイルの暗号化</h3>
+
+<p>% openssl enc -e -p -aes-128-cbc -in plain.txt -out aes-128-cbc-encoded.txt.enc
+enter aes-128-cbc decryption password:
+Verifying - enter aes-128-cbc encryption password:
+salt=E35318ECA848B145
+key=6C8C6D6ED9DDDB5375CAD017DCF99845
+iv =EF39F40A302C8CCF320FF44170E84ED0</p>
+
+<h3 id="salt-s">salt の値を指定する方法 (-S オプション)</h3>
+
+<p>% openssl enc -S E35318ECA848B145 -e -p -aes-128-cbc -in plain.txt -out aes-128-cbc-encoded.txt.enc</p>
+
+<p>公開鍵暗号による暗号化の体験</p>
+
+<h3 id="512bit-rsa-1024bit-2048bit">512bit の RSA 秘密鍵 (実際には 1024bit や 2048bit 等もっと長い秘密鍵を使う) の生成</h3>
+
+<h3 id="des3">不正に利用されないように DES3 で暗号化しておく．</h3>
+
+<p>% openssl genrsa -des3 -out private.pem
+Generating RSA private key, 512 bit long modulus
+.++++++++++++
+..........++++++++++++
+e is 65537 (0x10001)</p>
+
+<h3 id="-6">秘密鍵の暗号化のためのパスワード</h3>
+
+<p>Enter pass phrase for private.pem:
+Verifying - Enter pass phrase for private.pem:</p>
+
+<h3 id="-7">秘密鍵に対応する公開鍵の生成</h3>
+
+<p>% openssl rsa -pubout -in private.pem -out public.pem</p>
+
+<h3 id="-8">上記で入力したパスワード</h3>
+
+<p>Enter pass phrase for private.pem:
+writing RSA key</p>
+
+<h3 id="-9">公開鍵を用いたファイルの暗号化</h3>
+
+<p>% openssl rsautl -encrypt -pubin -inkey public.pem -in plain.txt -out rsa-encoded.txt.enc</p>
+
+<h3 id="-10">秘密鍵を用いたファイルの復号化</h3>
+
+<p>% openssl rsautl -decrypt -inkey private.pem -in rsa-encoded.txt.enc
+Enter pass phrase for private.pem:
+ひみつの文章ですよー．</p>
+
+<p>一方向ハッシュの体験</p>
+
+<h3 id="md5">md5 アルゴリズムを用いたハッシュ値の生成</h3>
+
+<p>% echo 'hoge' | openssl dgst -md5 -hex
+c59548c3c576228486a1f0037eb16a1b
+% echo 'hoge' | openssl dgst -md5 -hex
+c59548c3c576228486a1f0037eb16a1b
+% cat private.pem | openssl dgst -md5 -hex
+3c2a0af10d9cfa899bfc032402d2fdeb</p>
+
+<p>[1] 参照: Turbo Linux サポートドキュメント「opensslによるファイルの暗号化」: <a href="http://www.sh.turbolinux.com/support/document/knowledge/654.html">http://www.sh.turbolinux.com/support/document/knowledge/654.html</a></p>
+</body>
+</html>
+
